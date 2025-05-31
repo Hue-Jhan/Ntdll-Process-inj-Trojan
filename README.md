@@ -1,11 +1,11 @@
 # Native API Remote Process injection Trojan
 
-Remote process injection trojan using Native Api stubs (dynamically resolved) and encrypted shellcode, undetected by Windows Defender.
+Remote process injection trojan using Native Api functions (dynamically resolved) and encrypted shellcode, undetected by Windows Defender.
 This code is for educational purposes only, do not use it for any malicious or unauthorized activity.
 
 
 # 💻 Code
-This malware uses dynamically resolved function pointers from ntdll.dll to reduce static IAT footprint, it retrieves addresses of native api functions at runtime and uses them to decrypt and upload shellcode into a target process.
+This malware calls native api functions usei dynamically resolved function pointers from ntdll.dll, reducing static IAT footprint. So it basically retrieves addresses of native api functions at runtime and uses them to upload shellcode into a target process.
 
 ### 1) Listener and encrypted payload
 
@@ -18,11 +18,11 @@ This malware uses dynamically resolved function pointers from ntdll.dll to reduc
 - Once we have the shellcode we load it into the ```encrypter.c```  file, where the binary data is converted into Base64, use a custom base64_chars set instead of the standard alphabet to obfuscate more, secondly XOR encryption is applied (single-byte key), and finally we convert it into a hexadecimal string. You can find the encrypting code [here](https://github.com/Hue-Jhan/Simple-shellcode-crypter) or you can use your own encryption, but remember not to use rsa or aes or similar encoding algorithms as they are "too perfect" and raise the entropy levels too much.
 
 ### 2.1) Native Api:
-We get a handle to ntdll and we export its functions, these are the lowest level Win API calls exposed to the user mode, and are the closest interface to the Windows kernel, below them there are just system calls which i will include in the future. Unlike ```kernel32.dll``` APIs like VirtualAllocEx, ```ntdll``` functions are sometimes less likely to be hooked by EDRs at user level.
+We get a handle to ntdll and we dynamically resolve its functions, these are the lowest level Win API calls exposed to the user mode, and are the closest interface to the Windows kernel, below them there are just system calls which i will include in the future. Unlike ```kernel32.dll``` APIs like VirtualAllocEx, ```ntdll``` functions are sometimes less likely to be hooked by EDRs at user level.
 
-- In order to use Ntdll we create custom type def structs for each function, and we define all the internal structures and objects that they need, sometimes structures will require even more internal objects n stuff.
+- In order to use Ntdll we create custom typedef structs for each function, and we define all the internal structures and objects that they need, sometimes structures may be nested and require even more internal objects;
 - Then we use ```GetNtFunctionAddress``` function to dynamically retrieve addresses of NT functions from ntdll using ```GetProcAddress```.
-- Once we retrieve the functions we can use them to do cool stuff : )
+- Once we retrieve them, we can call these native NT functions directly and use them to do cool stuff : )
 
 ### 2.2) Injector:
 
