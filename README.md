@@ -21,8 +21,8 @@ This malware uses dynamically resolved function pointers from ntdll.dll to reduc
 We get a handle to ntdll and we export its functions, these are the lowest level Win API calls exposed to the user mode, and are the closest interface to the Windows kernel, below them there are just system calls which i will include in the future. Unlike ```kernel32.dll``` APIs like VirtualAllocEx, ```ntdll``` functions are sometimes less likely to be hooked by EDRs at user level.
 
 - In order to use Ntdll we create custom type def structs for each function, and we define all the internal structures and objects that they need, sometimes structures will require even more internal objects n stuff.
-
 - Then we use ```GetNtFunctionAddress``` function to dynamically retrieve addresses of NT functions from ntdll using ```GetProcAddress```.
+- Once we retrieve the functions we can use them to do cool stuff : )
 
 ### 2.2) Injector:
 
