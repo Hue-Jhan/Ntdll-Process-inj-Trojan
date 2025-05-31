@@ -38,8 +38,12 @@ Finally we wait for the created thread to finish executing before freeing the me
 
 <img align="right" src="media/nt-crypt-proc-inj-msfvenom.png" width="350" />
 
-The raw exe file is currently undetected by windows defender but gets blocked by Bitdefender (even the free trial, yes bitdefender is the best av in my opinion, only behind crowdstrike). On virus total it gets 9 detections and as usual virustotal doesn't show bitdefender flagging it.
+The raw exe file is currently undetected by windows defender but gets blocked by Bitdefender (even the free trial, yes bitdefender is the best av in my opinion, only behind crowdstrike). 
+
+On virus total it gets 9 detections and as usual it doesn't show bitdefender flagging it.
 
 If i obfuscate the file even more with Resource Hacker by inserting the metadata of another well known software like visual studio code installer, the detections drop to 2 on virus total.
+
+You can obfuscate it even more using tools like soggoth, or by turning it into an msi or iso file.
 
 <img align="right" src="media/nt-crypt-proc-inj-msfvenom-reshacked.png" width="350" />
