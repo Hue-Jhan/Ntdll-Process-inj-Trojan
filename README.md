@@ -42,8 +42,7 @@ The raw exe file is currently undetected by windows defender but gets blocked by
 
 On virus total it gets 9 detections and as usual it doesn't show bitdefender flagging it.
 
-If i obfuscate the file even more with Resource Hacker by inserting the metadata of another well known software like visual studio code installer, the detections drop to 2 on virus total.
+If i obfuscate the file even more with Resource Hacker by inserting the metadata of another well known software like visual studio code installer, the detections drop to 2 on virus total. <img align="right" src="media/nt-crypt-proc-inj-msfvenom-reshacked.png" width="350" />
+
 
 You can obfuscate it even more using tools like soggoth, or by turning it into an msi or iso file.
-
-<img align="right" src="media/nt-crypt-proc-inj-msfvenom-reshacked.png" width="350" />
