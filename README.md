@@ -35,8 +35,11 @@ The actual injection process works like this:
 Finally we wait for the created thread to finish executing before freeing the memory and the buffers.
 
 # 🛡 AV Detection
+
+<img align="right" src="media/nt-crypt-proc-inj-msfvenom.png" width="350" />
+
 The raw exe file is currently undetected by windows defender but gets blocked by Bitdefender (even the free trial, yes bitdefender is the best av in my opinion, only behind crowdstrike). On virus total it gets 9 detections and as usual virustotal doesn't show bitdefender flagging it.
 
 If i obfuscate the file even more with Resource Hacker by inserting the metadata of another well known software like visual studio code installer, the detections drop to 2 on virus total.
 
-<img align="right" src="media/hsav2.png" width="430" />
+<img align="right" src="media/nt-crypt-proc-inj-msfvenom-reshacked.png" width="350" />
