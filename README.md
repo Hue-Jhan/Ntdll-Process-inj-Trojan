@@ -5,7 +5,7 @@ This code is for educational purposes only, do not use it for any malicious or u
 
 
 # 💻 Code
-This malware calls native api functions usei dynamically resolved function pointers from ntdll.dll, reducing static IAT footprint. So it basically retrieves addresses of native api functions at runtime and uses them to upload shellcode into a target process.
+This malware calls native api functions using dynamically resolved function pointers from ntdll.dll, reducing static IAT footprint. So it basically retrieves addresses of native api functions at runtime and uses them to upload shellcode into a target process.
 
 ### 1) Listener & payload
 
